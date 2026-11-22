@@ -1,46 +1,95 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Project Work is an independent platform in development for discovering local and remote project-based work opportunities.">
-  <title>Project Work | Find work worth doing</title>
+  <meta name="description" content="Project Work is a project-discovery concept bringing skills and opportunities together, helping independent talent find meaningful projects.">
+  <title>Project Work | Bringing Skills and Opportunities Together</title>
   <style>
-    :root {color-scheme: dark; font-family: system-ui, -apple-system, Segoe UI, sans-serif;}
-    * {box-sizing: border-box;}
-    body {margin:0; background:#101820; color:#f3f5f7; line-height:1.6;}
-    main {max-width:850px; margin:auto; padding:64px 24px;}
-    .eyebrow {color:#86d9b5; font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:.8rem;}
-    h1 {font-size:clamp(3rem,9vw,5.8rem); line-height:1.05; margin:12px 0 20px; letter-spacing:-.05em;}
-    .lead {font-size:clamp(1.1rem,3vw,1.5rem); color:#c8d2d9; max-width:680px;}
-    .rule {height:1px; background:#32414b; margin:48px 0;}
-    h2 {font-size:1.45rem; margin-bottom:12px;}
-    p {color:#c8d2d9;}
-    .grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:22px;}
-    .panel {border:1px solid #33434d; border-radius:14px; padding:22px; background:#17232c;}
-    .panel h2 {margin-top:0;}
-    footer {font-size:.9rem; color:#9daeb8; margin-top:50px;}
+    :root {color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif;--bg:#101820;--panel:#17232c;--text:#f3f5f7;--muted:#c8d2d9;--mint:#86d9b5;--line:#32414b}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);line-height:1.65}
+    a{color:inherit}main{max-width:920px;margin:auto;padding:30px 24px 72px}
+    .top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:66px}
+    .brand{font-weight:850;letter-spacing:.04em;font-size:1rem;text-decoration:none}.brand span{border-bottom:3px solid var(--mint)}
+    .stage{font-size:.75rem;font-weight:700;color:var(--mint);letter-spacing:.09em;text-transform:uppercase}
+    .eyebrow{color:var(--mint);font-weight:750;letter-spacing:.14em;text-transform:uppercase;font-size:.77rem}
+    h1{font-size:clamp(2.6rem,8vw,5.2rem);line-height:1.08;margin:14px 0 22px;letter-spacing:-.05em;max-width:850px}
+    .lead{font-size:clamp(1.12rem,3vw,1.48rem);color:var(--muted);max-width:760px}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 0}
+    .button{display:inline-flex;align-items:center;justify-content:center;padding:13px 19px;border-radius:10px;text-decoration:none;font-weight:750;font-size:.95rem;background:var(--mint);color:#10221e;min-height:48px}
+    .button.secondary{background:transparent;border:1px solid #61747b;color:var(--text)}
+    .rule{height:1px;background:var(--line);margin:55px 0}h2{font-size:clamp(1.4rem,4vw,1.9rem);line-height:1.25;margin:0 0 15px;letter-spacing:-.025em}
+    p{color:var(--muted);margin:0 0 17px}.mission p{max-width:780px}
+    .motto{font-weight:750;color:var(--mint);font-size:1.1rem;margin-top:26px}.principle{font-weight:650;color:var(--text)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:16px;margin-top:24px}
+    .panel{border:1px solid #33434d;border-radius:14px;padding:22px;background:var(--panel)}
+    .panel h3{margin:0 0 10px;font-size:1.06rem}.panel p{font-size:.94rem;margin:0}
+    .note{border-left:3px solid var(--mint);padding:3px 0 3px 17px;margin-top:20px}
+    footer{font-size:.83rem;color:#9daeb8;margin-top:50px}footer p{color:#9daeb8}
+    @media(max-width:520px){main{padding:24px 20px 60px}.top{margin-bottom:47px}.rule{margin:42px 0}.actions .button{width:100%}}
   </style>
 </head>
 <body>
 <main>
-  <div class="eyebrow">Independent project · In development</div>
-  <h1>PROJECT WORK</h1>
-  <p class="lead">Find work worth doing. Discover local and remote projects where your skills can make a difference.</p>
+  <header class="top">
+    <a class="brand" href="./" aria-label="Project Work home"><span>PRO</span>JECT WORK</a>
+    <div class="stage">Independent concept · In development</div>
+  </header>
+
+  <section aria-labelledby="hero-title">
+    <div class="eyebrow">Making talent visible. Making opportunity accessible.</div>
+    <h1 id="hero-title">Bringing Skills and Opportunities Together.</h1>
+    <p class="lead">A project-discovery platform in development, connecting independent talent with meaningful local and remote opportunities.</p>
+    <div class="actions">
+      <a class="button" href="./feed/">Explore the Prototype →</a>
+      <a class="button secondary" href="#mission">Our Mission</a>
+    </div>
+  </section>
+
   <div class="rule"></div>
-  <h2>What we're building</h2>
-  <p>Project Work is a proposed discovery platform connecting people who need help with people who can get projects done—from repairs, moving, and landscaping to custom fabrication, sewing, and creative work.</p>
-  <div class="grid">
-    <section class="panel"><h2>Discover opportunities</h2><p>Browse relevant project requests by location, category, and keywords.</p></section>
-    <section class="panel"><h2>Connect at the source</h2><p>Open the original public listing to contact the person requesting help.</p></section>
-    <section class="panel"><h2>Built around real skills</h2><p>Help independent workers and makers find projects that fit what they do best.</p></section>
-  </div>
+
+  <section id="mission" class="mission" aria-labelledby="mission-title">
+    <div class="eyebrow">Our mission</div>
+    <h2 id="mission-title">Opportunity beyond the traditional job.</h2>
+    <p>We believe talent isn't defined by a job title, a traditional career path, or the ability to promote yourself.</p>
+    <p>Some people thrive working independently, applying their skills and creativity to individual projects rather than conventional employment. Yet their abilities and the opportunities suited to them often go undiscovered.</p>
+    <p><strong style="color:var(--text)">Project Work exists to bridge that gap.</strong> We connect people with meaningful projects, make independent talent more visible, and create opportunities for skills to be recognized through real accomplishments.</p>
+    <p>Our community is built around craftsmanship, reliability, honesty, and respect—where the quality of what you do matters more than how well you sell yourself.</p>
+    <p class="motto">Making Talent Visible. Making Opportunity Accessible.</p>
+    <p class="principle">Reputation is earned. Talent is demonstrated. Opportunity is open.</p>
+  </section>
+
   <div class="rule"></div>
-  <h2>Current development stage</h2>
-  <p>We are evaluating authorized ways to discover and display publicly shared project requests. Project Work is not yet open to users. Any future third-party content integration will depend on the relevant platform's approval and requirements.</p>
-  <footer>Project Work · Independent pre-launch concept · No affiliation with Nextdoor or other listing platforms.</footer>
+
+  <section aria-labelledby="concept-title">
+    <div class="eyebrow">The concept</div>
+    <h2 id="concept-title">Connecting projects to people</h2>
+    <p>Project Work is being designed to help people discover project requests—from repairs, moving, and landscaping to custom fabrication, sewing, and creative work. Its companion concept, Work Project, would give independent Workeers a place to showcase their abilities and earn reputations through customer-confirmed projects.</p>
+    <div class="grid">
+      <div class="panel"><h3>Discover opportunities</h3><p>Explore local and remote project requests by location, category, and keywords.</p></div>
+      <div class="panel"><h3>Connect at the source</h3><p>Follow a listing back to its original platform, where communication and hiring can take place.</p></div>
+      <div class="panel"><h3>Recognize real skills</h3><p>Give independent people a path to be discovered through what they can actually accomplish.</p></div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <section aria-labelledby="partners-title">
+    <div class="eyebrow">For potential platform partners</div>
+    <h2 id="partners-title">Discovery that respects the original source</h2>
+    <p>Our goal is to help relevant project requests reach people equipped to complete them, while directing interested Workeers to the original listing and preserving the source platform's role in communication and hiring.</p>
+    <div class="note"><p>We are exploring authorized API access and partnerships. We intend to follow source-platform rules, attribution requirements, content permissions, and listing-availability requirements. No third-party integration or permission is implied by this concept site.</p></div>
+  </section>
+
+  <div class="rule"></div>
+
+  <section aria-labelledby="status-title">
+    <h2 id="status-title">Current development stage</h2>
+    <p>Project Work is an independent pre-launch concept, not yet open for public use. The interactive feed is a prototype using demonstration listings. Any future third-party content integration depends on the relevant platform's approval and requirements.</p>
+    <div class="actions"><a class="button" href="./feed/">View the Project Work Prototype →</a></div>
+  </section>
+
+  <footer><p>Project Work · Independent pre-launch concept · No affiliation with Nextdoor or other listing platforms.</p></footer>
 </main>
 </body>
-<!-- Project Work website update -->
 </html>
