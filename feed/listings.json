@@ -12,7 +12,10 @@
     ],
     "emoji": "🪚",
     "posted": "2026-11-21",
-    "source": "Sample listing"
+    "source": "Sample listing",
+    "imageUrl": "./images/gate-repair.jpg",
+    "imageType": "illustration",
+    "imageAlt": "AI-generated illustrative example of repair a backyard gate; not an actual job photo"
   },
   {
     "id": "demo-002",
@@ -27,7 +30,10 @@
     ],
     "emoji": "📦",
     "posted": "2026-11-20",
-    "source": "Sample listing"
+    "source": "Sample listing",
+    "imageUrl": "./images/sofa-moving.jpg",
+    "imageType": "illustration",
+    "imageAlt": "AI-generated illustrative example of help move a small sofa; not an actual job photo"
   },
   {
     "id": "demo-003",
@@ -42,7 +48,10 @@
     ],
     "emoji": "🧵",
     "posted": "2026-11-19",
-    "source": "Sample listing"
+    "source": "Sample listing",
+    "imageUrl": "./images/leather-tool-roll.jpg",
+    "imageType": "illustration",
+    "imageAlt": "AI-generated illustrative example of custom leather tool roll; not an actual job photo"
   },
   {
     "id": "demo-004",
@@ -57,7 +66,10 @@
     ],
     "emoji": "🌿",
     "posted": "2026-11-18",
-    "source": "Sample listing"
+    "source": "Sample listing",
+    "imageUrl": "./images/yard-cleanup.jpg",
+    "imageType": "illustration",
+    "imageAlt": "AI-generated illustrative example of clean up overgrown yard; not an actual job photo"
   },
   {
     "id": "demo-005",
@@ -72,7 +84,10 @@
     ],
     "emoji": "🦎",
     "posted": "2026-11-17",
-    "source": "Sample listing"
+    "source": "Sample listing",
+    "imageUrl": "./images/reptile-enclosure.jpg",
+    "imageType": "illustration",
+    "imageAlt": "AI-generated illustrative example of build a custom reptile enclosure; not an actual job photo"
   },
   {
     "id": "demo-006",
@@ -87,7 +102,10 @@
     ],
     "emoji": "🔧",
     "posted": "2026-11-16",
-    "source": "Sample listing"
+    "source": "Sample listing",
+    "imageUrl": "./images/outdoor-faucet.jpg",
+    "imageType": "illustration",
+    "imageAlt": "AI-generated illustrative example of fix a dripping outdoor faucet; not an actual job photo"
   },
   {
     "id": "demo-007",
@@ -102,7 +120,10 @@
     ],
     "emoji": "🪡",
     "posted": "2026-11-15",
-    "source": "Sample listing"
+    "source": "Sample listing",
+    "imageUrl": "./images/work-apron.jpg",
+    "imageType": "illustration",
+    "imageAlt": "AI-generated illustrative example of sew a made-to-measure apron; not an actual job photo"
   },
   {
     "id": "demo-008",
@@ -117,6 +138,9 @@
     ],
     "emoji": "🛠️",
     "posted": "2026-11-14",
-    "source": "Sample listing"
+    "source": "Sample listing",
+    "imageUrl": "./images/storage-shelving.jpg",
+    "imageType": "illustration",
+    "imageAlt": "AI-generated illustrative example of assemble storage shelving; not an actual job photo"
   }
 ]
