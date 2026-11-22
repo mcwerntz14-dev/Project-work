@@ -1,0 +1,155 @@
+{
+  "concepts": {
+    "yard-care": {
+      "terms": [
+        "yard",
+        "yard work",
+        "yardwork",
+        "lawn",
+        "lawn care",
+        "lawn mowing",
+        "mow",
+        "mowing",
+        "grass cutting",
+        "cut grass",
+        "weeds",
+        "weed removal",
+        "brush clearing",
+        "garden",
+        "landscaping",
+        "green waste",
+        "property cleanup"
+      ],
+      "categories": [
+        "Landscaping"
+      ]
+    },
+    "repairs": {
+      "terms": [
+        "handyman",
+        "handy man",
+        "repair",
+        "repairs",
+        "fix",
+        "maintenance",
+        "home repair",
+        "odd jobs",
+        "gate repair",
+        "installation"
+      ],
+      "categories": [
+        "Repairs",
+        "Assembly"
+      ]
+    },
+    "moving": {
+      "terms": [
+        "moving",
+        "move",
+        "movers",
+        "hauling",
+        "lifting",
+        "furniture moving",
+        "loading",
+        "unloading"
+      ],
+      "categories": [
+        "Moving"
+      ]
+    },
+    "sewing": {
+      "terms": [
+        "sew",
+        "sewing",
+        "sewist",
+        "tailor",
+        "tailoring",
+        "alterations",
+        "stitching",
+        "fabric work"
+      ],
+      "categories": [
+        "Custom & Craft"
+      ]
+    },
+    "leatherwork": {
+      "terms": [
+        "leather",
+        "leatherwork",
+        "leather craft",
+        "leather goods"
+      ],
+      "categories": [
+        "Custom & Craft"
+      ]
+    },
+    "custom-making": {
+      "terms": [
+        "custom",
+        "custom work",
+        "made to order",
+        "fabrication",
+        "woodworking",
+        "craft",
+        "maker"
+      ],
+      "categories": [
+        "Custom & Craft"
+      ]
+    },
+    "plumbing": {
+      "terms": [
+        "plumbing",
+        "plumber",
+        "faucet",
+        "hose bib",
+        "leak",
+        "dripping",
+        "water repair"
+      ],
+      "categories": [
+        "Repairs"
+      ]
+    },
+    "cleaning": {
+      "terms": [
+        "clean",
+        "cleaning",
+        "cleanup",
+        "clean up",
+        "tidying",
+        "debris removal"
+      ],
+      "categories": []
+    },
+    "assembly": {
+      "terms": [
+        "assembly",
+        "assemble",
+        "build shelving",
+        "put together",
+        "furniture assembly"
+      ],
+      "categories": [
+        "Assembly"
+      ]
+    }
+  },
+  "stopwords": [
+    "work",
+    "job",
+    "jobs",
+    "help",
+    "needed",
+    "need",
+    "project",
+    "projects",
+    "a",
+    "the",
+    "for",
+    "with",
+    "someone",
+    "to",
+    "do"
+  ]
+}

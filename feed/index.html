@@ -4,60 +4,30 @@
 </style></head><body><header><div class="top"><div class="brand">PROJECT WORK</div><span class="tag">DEMO · SAMPLE DATA</span></div></header><main><h1>Find work worth doing.</h1><p>Browse local and remote projects. Filter by skill, location, or keyword.</p><p class="note"><strong>Prototype only:</strong> All listings below are fictional examples. No real jobs, payments, or contact links are available yet.</p><section aria-label="Search filters"><div class="filters"><input id="search" type="search" placeholder="Try yard work, handyman, sewing…" aria-label="Search projects"><select id="location" aria-label="Location"><option value="all">All locations</option><option value="local">Local projects</option><option value="remote">Remote projects</option></select><select id="sort" aria-label="Sort"><option value="new">Newest first</option><option value="old">Oldest first</option></select></div><div id="categories" class="chips" aria-label="Categories"></div></section><div class="meta"><span id="count" aria-live="polite"></span><span>Illustrative listings</span></div><section id="cards" class="cards" aria-label="Project listings"></section><p class="footer">Project Work is an independent pre-launch concept. Source integrations require appropriate authorization. <a href="../">About Project Work</a></p></main><script>
 'use strict';
 // Replace this array with permitted, normalized source data when approved.
-const listings=[
-{id:'demo-001',title:'Repair a backyard gate',category:'Repairs',location:'Temecula, CA',mode:'local',description:'Wooden side gate is sagging and needs adjustment or replacement hinges.',skills:['Carpentry','Handyman'],emoji:'🪚',posted:'2026-11-21',source:'Sample listing'},
-{id:'demo-002',title:'Help move a small sofa',category:'Moving',location:'Hemet, CA',mode:'local',description:'Need an extra set of hands for a short furniture move.',skills:['Lifting','Moving'],emoji:'📦',posted:'2026-11-20',source:'Sample listing'},
-{id:'demo-003',title:'Custom leather tool roll',category:'Custom & Craft',location:'Remote / shipping',mode:'remote',description:'Looking for someone to make a durable leather tool organizer to specific measurements.',skills:['Leatherwork','Sewing'],emoji:'🧵',posted:'2026-11-19',source:'Sample listing'},
-{id:'demo-004',title:'Clean up overgrown yard',category:'Landscaping',location:'Murrieta, CA',mode:'local',description:'Trim weeds and haul away light green waste from a residential yard.',skills:['Landscaping','Hauling'],emoji:'🌿',posted:'2026-11-18',source:'Sample listing'},
-{id:'demo-005',title:'Build a custom reptile enclosure',category:'Custom & Craft',location:'Remote / shipping',mode:'remote',description:'Seeking a maker for a ventilated, made-to-order enclosure with a front opening.',skills:['Woodworking','Fabrication'],emoji:'🦎',posted:'2026-11-17',source:'Sample listing'},
-{id:'demo-006',title:'Fix a dripping outdoor faucet',category:'Repairs',location:'Anza, CA',mode:'local',description:'Outdoor hose bib drips after shutoff; looking for repair help.',skills:['Plumbing','Handyman'],emoji:'🔧',posted:'2026-11-16',source:'Sample listing'},
-{id:'demo-007',title:'Sew a made-to-measure apron',category:'Custom & Craft',location:'Remote / shipping',mode:'remote',description:'Looking for a sewist to create a sturdy work apron with custom pockets.',skills:['Sewing','Design'],emoji:'🪡',posted:'2026-11-15',source:'Sample listing'},
-{id:'demo-008',title:'Assemble storage shelving',category:'Assembly',location:'Palm Desert, CA',mode:'local',description:'Need help assembling two freestanding shelving units.',skills:['Assembly','Handyman'],emoji:'🛠️',posted:'2026-11-14',source:'Sample listing'}
-];
+let listings=[];
+let vocabulary={concepts:{},stopwords:[]};
 const $=id=>document.getElementById(id);const state={category:'All'};
-const categories=['All',...new Set(listings.map(x=>x.category))];
-function drawCategories(){const el=$('categories');el.replaceChildren();for(const cat of categories){const b=document.createElement('button');b.className='chip'+(cat===state.category?' active':'');b.textContent=cat;b.type='button';b.setAttribute('aria-pressed',String(cat===state.category));b.addEventListener('click',()=>{state.category=cat;drawCategories();render()});el.append(b)}}
+const categories=['All'];
+function drawCategories(){const el=$('categories');el.replaceChildren();for(const cat of (window.projectWorkCategories||categories)){const b=document.createElement('button');b.className='chip'+(cat===state.category?' active':'');b.textContent=cat;b.type='button';b.setAttribute('aria-pressed',String(cat===state.category));b.addEventListener('click',()=>{state.category=cat;drawCategories();render()});el.append(b)}}
 function card(item){const article=document.createElement('article');article.className='card';const art=document.createElement('div');art.className='art';art.textContent=item.emoji;art.setAttribute('aria-hidden','true');article.append(art);const body=document.createElement('div');body.className='content';const badges=document.createElement('div');badges.className='badges';for(const txt of [item.category,item.mode==='remote'?'Remote / shipping':'Local']){const s=document.createElement('span');s.className='pill'+(txt.startsWith('Remote')?' remote':'');s.textContent=txt;badges.append(s)}body.append(badges);const h=document.createElement('h2');h.textContent=item.title;body.append(h);const p=document.createElement('p');p.className='desc';p.textContent=item.description;body.append(p);const details=document.createElement('div');details.className='details';details.textContent=`📍 ${item.location} · ${item.posted}\n${item.skills.join(' · ')}`;body.append(details);const btn=document.createElement('button');btn.className='open';btn.disabled=true;btn.textContent='Sample listing · No contact';btn.title='Contact links become available only for authorized real listings';body.append(btn);article.append(body);return article}
-// Search concepts expand common descriptions without relying on paid AI.
-// Match all search concepts, but accept any related term within each concept.
-const searchConcepts={
- 'yard':['yard','landscaping','lawn','mowing','weeds','brush','garden','green waste'],
- 'handyman':['handyman','repairs','repair','maintenance','assembly','installation','fix'],
- 'moving':['moving','move','hauling','lifting','furniture','loading'],
- 'sewing':['sewing','sew','sewist','tailoring','alterations','stitching'],
- 'leather':['leather','leatherwork'],
- 'custom':['custom','made-to-order','fabrication','woodworking','craft'],
- 'plumbing':['plumbing','faucet','hose bib','leak','dripping'],
- 'cleaning':['cleaning','cleanup','clean up','clear','trim','weeds']
-};
-const aliases={'yard work':'yard','yardwork':'yard','lawn care':'yard','yard cleanup':'yard',
- 'odd jobs':'handyman','handy man':'handyman','home repair':'handyman',
- 'move furniture':'moving','furniture moving':'moving','custom work':'custom',
- 'sew':'sewing','tailor':'sewing','alteration':'sewing'};
-function normalize(text){return text.toLocaleLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim()}
-function searchTerms(query){
- let q=normalize(query);if(!q)return [];
- // Convert common multiword phrases to one concept before tokenizing.
- for(const [phrase,concept] of Object.entries(aliases).sort((a,b)=>b[0].length-a[0].length)){
-  const re=new RegExp('(^| )'+phrase.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'(?= |$)','g');
-  q=q.replace(re,(_,prefix)=>prefix+concept);
- }
- const stop=new Set(['work','job','jobs','help','needed','need','project','projects','a','the','for','with']);
- return q.split(/\s+/).filter(t=>t&&!stop.has(t));
+// Search logic is stable; edit search-vocabulary.json to expand terms.
+const norm=s=>String(s??'').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
+const tokens=s=>norm(s).split(' ').filter(Boolean);
+function editDistance(a,b){if(Math.abs(a.length-b.length)>2)return 3;let prev=Array.from({length:b.length+1},(_,i)=>i);for(let i=1;i<=a.length;i++){let cur=[i];for(let j=1;j<=b.length;j++)cur[j]=Math.min(cur[j-1]+1,prev[j]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));prev=cur}return prev[b.length]}
+function close(a,b){return a===b||(a.length>=5&&b.length>=5&&editDistance(a,b)<=1)}
+function conceptFor(phrase){const q=norm(phrase);for(const [id,concept] of Object.entries(vocabulary.concepts)){if(id===q||concept.terms.some(t=>norm(t)===q))return id}return null}
+function queryParts(q){let words=tokens(q).filter(w=>!vocabulary.stopwords.includes(w));const parts=[];while(words.length){let found=null;for(let size=Math.min(4,words.length);size>=1;size--){const phrase=words.slice(0,size).join(' ');const id=conceptFor(phrase);if(id){found={value:phrase,concept:id,size};break}}if(found){parts.push(found);words.splice(0,found.size)}else{parts.push({value:words.shift(),concept:null})}}return parts}
+function score(item,query){const parts=queryParts(query);if(!parts.length)return 1;
+ const title=norm(item.title),description=norm(item.description),skills=norm((item.skills||[]).join(' ')),category=norm(item.category),location=norm(item.location);
+ const fields=[{value:title,weight:12},{value:skills,weight:10},{value:category,weight:8},{value:description,weight:6},{value:location,weight:3}];
+ let total=0;
+ for(const part of parts){let best=0;const related=part.concept?vocabulary.concepts[part.concept]:null;
+  for(const f of fields){const padded=' '+f.value+' ';if(padded.includes(' '+part.value+' '))best=Math.max(best,f.weight+6);else if(part.value.length>=4&&tokens(f.value).some(w=>close(part.value,w)))best=Math.max(best,f.weight+2)}
+  if(related){for(const term of related.terms){const t=norm(term);for(const f of fields){if((' '+f.value+' ').includes(' '+t+' '))best=Math.max(best,Math.max(2,f.weight-2))}}if(related.categories.includes(item.category))best=Math.max(best,3)}
+  if(best===0)return 0;total+=best;
+ }return total;
 }
-function matchesSearch(item,query){
- const terms=searchTerms(query);if(!terms.length)return true;
- const hay=normalize([item.title,item.description,item.category,item.location,...item.skills].join(' '));
- const words=hay.split(' ');
- return terms.every(term=>{
-  const options=searchConcepts[term]||[term];
-  return options.some(option=>{
-   const normalized=normalize(option);
-   // Whole words or exact multiword phrases prevent incidental substring matches.
-   return normalized.includes(' ')?(' '+hay+' ').includes(' '+normalized+' '):words.includes(normalized);
-  });
- });
-}
-function render(){const q=$('search').value.trim();const mode=$('location').value;const sort=$('sort').value;const data=listings.filter(x=>(state.category==='All'||x.category===state.category)&&(mode==='all'||x.mode===mode)&&matchesSearch(x,q)).sort((a,b)=>sort==='new'?b.posted.localeCompare(a.posted):a.posted.localeCompare(b.posted));$('count').textContent=`${data.length} project${data.length===1?'':'s'} found`;$('cards').replaceChildren(...(data.length?data.map(card):[Object.assign(document.createElement('div'),{className:'empty',textContent:'No matching projects. Try clearing a filter.'})]))}
-for(const id of ['search','location','sort'])$(id).addEventListener(id==='search'?'input':'change',render);drawCategories();render();
+function render(){const q=$('search').value.trim(),mode=$('location').value,sort=$('sort').value;const data=listings.map(item=>({item,rank:score(item,q)})).filter(({item,rank})=>rank>0&&(state.category==='All'||item.category===state.category)&&(mode==='all'||item.mode===mode)).sort((a,b)=>q?(b.rank-a.rank||(sort==='new'?b.item.posted.localeCompare(a.item.posted):a.item.posted.localeCompare(b.item.posted))):(sort==='new'?b.item.posted.localeCompare(a.item.posted):a.item.posted.localeCompare(b.item.posted)));$('count').textContent=`${data.length} project${data.length===1?'':'s'} found`;$('cards').replaceChildren(...(data.length?data.map(x=>card(x.item)):[Object.assign(document.createElement('div'),{className:'empty',textContent:'No matching projects. Try another term or clear a filter.'})]))}
+async function initialize(){try{const [l,v]=await Promise.all([fetch('./listings.json'),fetch('./search-vocabulary.json')]);if(!l.ok||!v.ok)throw new Error('Data files unavailable');listings=await l.json();vocabulary=await v.json();if(!Array.isArray(listings)||!vocabulary.concepts)throw new Error('Invalid data format');const categories=['All'];window.projectWorkCategories=categories;drawCategories();render()}catch(err){$('count').textContent='Unable to load listings';$('cards').textContent='Please check that listings.json and search-vocabulary.json are uploaded alongside index.html.';console.error(err)}}
+for(const id of ['search','location','sort'])$(id).addEventListener(id==='search'?'input':'change',render);initialize();
 </script></body></html>

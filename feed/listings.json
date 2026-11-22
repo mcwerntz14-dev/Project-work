@@ -1,0 +1,122 @@
+[
+  {
+    "id": "demo-001",
+    "title": "Repair a backyard gate",
+    "category": "Repairs",
+    "location": "Temecula, CA",
+    "mode": "local",
+    "description": "Wooden side gate is sagging and needs adjustment or replacement hinges.",
+    "skills": [
+      "Carpentry",
+      "Handyman"
+    ],
+    "emoji": "🪚",
+    "posted": "2026-11-21",
+    "source": "Sample listing"
+  },
+  {
+    "id": "demo-002",
+    "title": "Help move a small sofa",
+    "category": "Moving",
+    "location": "Hemet, CA",
+    "mode": "local",
+    "description": "Need an extra set of hands for a short furniture move.",
+    "skills": [
+      "Lifting",
+      "Moving"
+    ],
+    "emoji": "📦",
+    "posted": "2026-11-20",
+    "source": "Sample listing"
+  },
+  {
+    "id": "demo-003",
+    "title": "Custom leather tool roll",
+    "category": "Custom & Craft",
+    "location": "Remote / shipping",
+    "mode": "remote",
+    "description": "Looking for someone to make a durable leather tool organizer to specific measurements.",
+    "skills": [
+      "Leatherwork",
+      "Sewing"
+    ],
+    "emoji": "🧵",
+    "posted": "2026-11-19",
+    "source": "Sample listing"
+  },
+  {
+    "id": "demo-004",
+    "title": "Clean up overgrown yard",
+    "category": "Landscaping",
+    "location": "Murrieta, CA",
+    "mode": "local",
+    "description": "Trim weeds and haul away light green waste from a residential yard.",
+    "skills": [
+      "Landscaping",
+      "Hauling"
+    ],
+    "emoji": "🌿",
+    "posted": "2026-11-18",
+    "source": "Sample listing"
+  },
+  {
+    "id": "demo-005",
+    "title": "Build a custom reptile enclosure",
+    "category": "Custom & Craft",
+    "location": "Remote / shipping",
+    "mode": "remote",
+    "description": "Seeking a maker for a ventilated, made-to-order enclosure with a front opening.",
+    "skills": [
+      "Woodworking",
+      "Fabrication"
+    ],
+    "emoji": "🦎",
+    "posted": "2026-11-17",
+    "source": "Sample listing"
+  },
+  {
+    "id": "demo-006",
+    "title": "Fix a dripping outdoor faucet",
+    "category": "Repairs",
+    "location": "Anza, CA",
+    "mode": "local",
+    "description": "Outdoor hose bib drips after shutoff; looking for repair help.",
+    "skills": [
+      "Plumbing",
+      "Handyman"
+    ],
+    "emoji": "🔧",
+    "posted": "2026-11-16",
+    "source": "Sample listing"
+  },
+  {
+    "id": "demo-007",
+    "title": "Sew a made-to-measure apron",
+    "category": "Custom & Craft",
+    "location": "Remote / shipping",
+    "mode": "remote",
+    "description": "Looking for a sewist to create a sturdy work apron with custom pockets.",
+    "skills": [
+      "Sewing",
+      "Design"
+    ],
+    "emoji": "🪡",
+    "posted": "2026-11-15",
+    "source": "Sample listing"
+  },
+  {
+    "id": "demo-008",
+    "title": "Assemble storage shelving",
+    "category": "Assembly",
+    "location": "Palm Desert, CA",
+    "mode": "local",
+    "description": "Need help assembling two freestanding shelving units.",
+    "skills": [
+      "Assembly",
+      "Handyman"
+    ],
+    "emoji": "🛠️",
+    "posted": "2026-11-14",
+    "source": "Sample listing"
+  }
+]
